@@ -5,7 +5,7 @@ import ViewUI from 'view-design';
 import store from './store';
 import 'view-design/dist/styles/iview.css';
 
-import '@/mock/index'
+import '@/mock/index';
 
 Vue.config.productionTip = false
 Vue.use(ViewUI);

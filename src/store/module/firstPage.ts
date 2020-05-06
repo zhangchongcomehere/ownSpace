@@ -4,14 +4,14 @@ const firstPage = {
         data:''
     },
     mutations: {
-        setFirst(state,res:any){
+        setFirst(state, res: any){
             console.log(res);
             state.data = res;
         }
     },
     actions:{
-        async testApi({commit},code:string){
-            let result = await testApi(code);
+        async testApi({commit}){
+            let result = await testApi();
             commit("setFirst",result)
         }
     }

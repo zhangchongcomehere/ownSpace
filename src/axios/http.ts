@@ -2,10 +2,7 @@ import Axios from 'axios';
 
 
 const axiosIntance = Axios.create({
-    baseURL: 'http://192.168.2.121:8080',
-    headers:{
-        'Content-Type':'application/json;charset=utf-8'
-    }
+    baseURL: 'http://mockjs.com/api'
 })
 
 axiosIntance.interceptors.request.use(config => {

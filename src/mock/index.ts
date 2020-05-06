@@ -1,38 +1,34 @@
-// const Mock = require('mockjs')
-import Mock from 'mockjs'
+const Mock = require('mockjs') // 获取mock对象
+const Random = Mock.Random // 获取random对象，随机生成各种数据，具体请翻阅文档
+const domain = 'http://mockjs.com/api' // 定义默认域名，随便写
+const code = 200 // 返回的状态码
 
-Mock.setup({
-    timeout:'200-600'
-})
+// 随机生成文章数据
+function postData (req:any) {
+  
+  console.log(req) // 请求体，用于获取参数
 
-Mock.mock('http://192.168.2.121:8080/parameter/query','get',{
-  status: 200,
-  message: 'success',
-  data: [{
-      id: 1,
-      name: 'zs',
-      age: '23',
-      job: '前端工程师'
-  },{
-      id: 2,
-      name: 'ww',
-      age: '24',
-      job: '后端工程师'
-  }]
-})
-// let configArray:any[] = [];
+  let posts = [] // 用于存放文章数据的数组
+  
+  for (let i = 0; i < 10; i++) {
+    let post = {
+      title: Random.csentence(10, 25), // 随机生成长度为10-25的标题
+      icon: Random.dataImage('250x250', '文章icon'), // 随机生成大小为250x250的图片链接
+      author: Random.cname(), // 随机生成名字
+      date: Random.date() + ' ' + Random.time() // 随机生成年月日 + 时间
+    }
 
-// // 使用webpack的require.context()遍历所有mock文件
-// const files = require.context('.', true, /\.js$/);
-// files.keys().forEach((key) => {
-//   if (key === './index.js') return;
-//   configArray = configArray.concat(files(key).default);
-// });
+    posts.push(post)
+  }
+  
+  // 返回状态码和文章数据posts
+  return {
+    code,
+    posts
+  }
+}
 
-// // 注册所有的mock服务
-// configArray.forEach((item) => {
-//   for (let [path, target] of Object.entries(item)) {
-//     let protocol = path.split('|');
-//     Mock.mock(new RegExp('^' + protocol[1]), protocol[0], target);
-//   }
-// });
+// 定义请求链接，类型，还有返回数据
+Mock.mock(`${domain}/posts`, 'get', [
+    1,2.3
+]);

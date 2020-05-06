@@ -1,11 +1,9 @@
 import httpAxios from "../axios/http"
 
-export function testApi(code:string){
+export function testApi(){
     return httpAxios({
-        url:'/parameter/query',
+        url:'/posts',
         method:'get',
-        params:{
-            code
-        }
+        params:{}
     })
 }
