@@ -13,5 +13,9 @@
         private goYellow(params:string):void{
             this.$router.push({name: 'yellow', query:{routeText:params}})
         }
+
+        private mounted(){
+            this.$store.dispatch("testApi","111")
+        }
     }
 </script>

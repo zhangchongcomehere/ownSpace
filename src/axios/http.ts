@@ -1,15 +1,23 @@
 import Axios from 'axios';
 
-declare module 'axios' {
-    export interface AxiosRequestConfig {
-        baseUrl: string;
-        header: string;
-    }
-  }
 
 const axiosIntance = Axios.create({
-    baseUrl: 'http://192.168.0.1',
-    header:'application/json;charset=utf-8'
+    baseURL: 'http://192.168.2.121:8080',
+    headers:{
+        'Content-Type':'application/json;charset=utf-8'
+    }
+})
+
+axiosIntance.interceptors.request.use(config => {
+    return config
+},error => {
+    return Promise.reject(error)
+})
+
+axiosIntance.interceptors.response.use(response => {
+    return response
+},error => {    
+    return Promise.reject(error)
 })
 
 export default axiosIntance
