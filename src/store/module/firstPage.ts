@@ -12,7 +12,7 @@ const firstPage = {
     actions:{
         async testApi({commit}){
             let result = await testApi();
-            commit("setFirst",result)
+            commit("setFirst",result.data)
         }
     }
 }
