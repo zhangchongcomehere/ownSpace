@@ -24,7 +24,7 @@
 
         private mounted(){
             this.testApi().then(()=>{
-                console.log(this.menu)
+                
             })
         }
     }

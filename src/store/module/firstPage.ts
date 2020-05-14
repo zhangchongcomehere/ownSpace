@@ -1,5 +1,32 @@
 // import {testApi} from "@/api/firstPage"
-import { Commit } from 'vuex'
+import { Commit} from 'vuex'
+
+abstract class typeModal {
+    constructor(public name:number){
+
+    }
+    setStr<i>(res:i):i{
+        return res
+    }
+    abstract setUrl(): void
+}
+
+class suns extends typeModal {
+    constructor(){
+        super(1)
+    }
+    setStr<i>(res:i):i{
+        return res
+    }
+    setUrl(){
+        console.log(this.name)
+    }
+}
+
+let i = new suns();
+
+i.setUrk();
+
 
 const state : any = {
     menu: {
@@ -14,7 +41,7 @@ const mutations : any = {
 }
 
 const actions : any = {
-    async testApi(content: {commit: Commit}){       
+    async testApi(content: {commit: Commit}){
         content.commit('setFirst',{on:1})
     }
 }
