@@ -6,8 +6,6 @@ const code = 200 // 返回的状态码
 // 随机生成文章数据
 function postData (req:any) {
   
-  console.log(req) // 请求体，用于获取参数
-
   let posts = [] // 用于存放文章数据的数组
   
   for (let i = 0; i < 10; i++) {
@@ -30,5 +28,5 @@ function postData (req:any) {
 
 // 定义请求链接，类型，还有返回数据
 Mock.mock(`${domain}/posts`, 'get', [
-    1,2.3
+    1,2,3
 ]);
